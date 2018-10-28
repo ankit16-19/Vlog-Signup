@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    div.signup-wall
+        each user in users
+            ul.user-details
+                li Username ---> #{user.username}
+                li Email    ---> #{user.email}
+                li First Name ---> #{user.firstName} 
+                li Last Name ---> #{user.lastName}
+                a(href='/edit?id='+ user._id, class='text-center new-account') Update

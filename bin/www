@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+var debug = require("debug")("passport-mongo")
+var mongodb = require("mongodb")
+var dbConfig = require("../db")
+
+// Connect to DB
+mongodb.MongoClient.connect(
+  dbConfig.url,
+  function(err, client) {
+    if (err) {
+      console.log(err)
+      process.exit(1)
+    }
+    // Save database object from the callback for reuse.
+    var db = client.db("vlog")
+    app = require("../app")(db)
+    app.set("port", process.env.PORT || 3000)
+    console.log("Database connection ready")
+    var server = app.listen(app.get("port"), function() {
+      debug("Express server listening on port " + server.address().port)
+    })
+  }
+)

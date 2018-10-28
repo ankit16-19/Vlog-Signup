@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	div.container
+		div.row
+			div.col-sm-6.col-md-4.col-md-offset-4
+					a(href='/login', class='text-center new-account') Login		
+					a(href='/signup', class='text-center new-account') Register
+					#message
+					if message
+						h1.text-center.error-message #{message}
