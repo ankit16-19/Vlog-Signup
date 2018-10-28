@@ -27,7 +27,7 @@ module.exports = function(passport, db) {
     }),
     function(req, res) {
       if (req.user.username === "admin") {
-        return res.redirect("/")
+        return res.redirect("/admin")
       }
       return res.redirect("/home")
     }
